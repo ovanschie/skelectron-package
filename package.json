@@ -1,0 +1,28 @@
+{
+  "name": "skelectron",
+  "version": "0.0.1",
+  "description": "Skelectron helper package",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovanschie/skelectron-package.git"
+  },
+  "keywords": [
+    "skelectron",
+    "electron"
+  ],
+  "author": "ovanschie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ovanschie/skelectron-package/issues"
+  },
+  "homepage": "https://github.com/ovanschie/skelectron-package#readme",
+  "devDependencies": {
+    "devtron": "^1.3.0",
+    "vue-devtools": "2.0.4"
+  },
+  "dependencies": {
+    "electron-is-dev": "^0.1.2",
+    "dotenv": "^2.0.0"
+  }
+}
