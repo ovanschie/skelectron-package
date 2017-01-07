@@ -3,7 +3,10 @@
 const electron = require('electron');
 const isDev = require('electron-is-dev');
 
-require('./env.js');
+// Init main functions
+exports.install = function () {
+    require('./env.js');
+};
 
 // Install dev tools in renderer
 exports.devTools = function () {
