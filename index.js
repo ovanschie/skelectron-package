@@ -21,13 +21,24 @@ exports.titleBar = function () {
 // Check for development
 exports.isDev = isDev;
 
-// App Path
+// Main app Paths
 let appPath = electron.app.getAppPath();
 let appPathUnpacked = appPath;
 
-if (!isDev) {
+if (! isDev) {
     appPathUnpacked = appPath + '.unpacked';
 }
 
 exports.appPath = appPath;
 exports.appPathUnpacked = appPathUnpacked;
+
+// Remote app paths
+let remoteAppPath = electron.remote.app.getAppPath();
+let remoteAppPathUnpacked = appPath;
+
+if (! isDev) {
+    remoteAppPathUnpacked = remoteAppPath + '.unpacked';
+}
+
+exports.remoteAppPath = remoteAppPath;
+exports.remoteAppPathUnpacked = remoteAppPathUnpacked;
