@@ -1,6 +1,6 @@
 {
   "name": "skelectron",
-  "version": "0.2.o",
+  "version": "0.2.0",
   "description": "Skelectron helper package",
   "main": "index.js",
   "repository": {
