@@ -21,24 +21,23 @@ exports.titleBar = function () {
 // Check for development
 exports.isDev = isDev;
 
-// Main app Paths
-let appPath = electron.app.getAppPath();
-let appPathUnpacked = appPath;
+// App Path Helpers
+exports.appPath = function (unpacked = false) {
+    let appPath = electron.app.getAppPath();
 
-if (! isDev) {
-    appPathUnpacked = appPath + '.unpacked';
-}
+    if (unpacked && ! isDev) {
+        return appPath + '.unpacked';
+    }
 
-exports.appPath = appPath;
-exports.appPathUnpacked = appPathUnpacked;
+    return appPath;
+};
 
-// Remote app paths
-let remoteAppPath = electron.remote.app.getAppPath();
-let remoteAppPathUnpacked = appPath;
+exports.remoteAppPath = function (unpacked = false) {
+    let appPath = electron.remote.app.getAppPath();
 
-if (! isDev) {
-    remoteAppPathUnpacked = remoteAppPath + '.unpacked';
-}
+    if (unpacked && ! isDev) {
+        return appPath + '.unpacked';
+    }
 
-exports.remoteAppPath = remoteAppPath;
-exports.remoteAppPathUnpacked = remoteAppPathUnpacked;
+    return appPath;
+};
