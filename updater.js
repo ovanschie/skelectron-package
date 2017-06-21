@@ -87,6 +87,11 @@ exports.initialize = function (url) {
     });
 
     // Start the update check
+    exports.checkForUpdates();
+};
+
+// Check for updates
+exports.checkForUpdates = function () {
     if (! skelectron.isDev) {
         autoUpdater.setFeedURL(feedUrl);
         autoUpdater.checkForUpdates();
@@ -96,20 +101,17 @@ exports.initialize = function (url) {
 // Manually check for updates
 exports.manuallyCheckForUpdates = function () {
     manualCheck = true;
-
-    autoUpdater.setFeedURL(feedUrl);
-    autoUpdater.checkForUpdates();
+    exports.checkForUpdates();
 };
 
 // Menu items for update status
 // and mannually checking
 exports.getUpdateMenuItems = function () {
+
     // Skip for appstore builds
     if (process.mas) {
         return [];
     }
-
-    const version = app.getVersion();
 
     return [
         {
