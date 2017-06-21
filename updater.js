@@ -2,13 +2,11 @@
 const electron = require('electron');
 const app = electron.app;
 const autoUpdater = electron.autoUpdater;
-const Menu = electron.Menu;
 const path = require('path');
 const skelectron = require('skelectron');
 
 let state = 'no-update',
-    manualCheck = false,
-    menu = Menu.getApplicationMenu();
+    manualCheck = false;
 
 // Initialize the updater
 exports.initialize = function (feedUrl) {
@@ -92,10 +90,8 @@ exports.initialize = function (feedUrl) {
 };
 
 exports.getUpdateMenuItems = function () {
-
     // Skip for appstore builds
-    // or if there is no menu
-    if (process.mas || ! menu) {
+    if (process.mas) {
         return [];
     }
 
@@ -136,6 +132,7 @@ exports.getUpdateMenuItems = function () {
 };
 
 exports.updateMenu = function () {
+    let menu = electron.Menu.getApplicationMenu();
 
     // Skip for appstore builds
     // or if there is no menu
