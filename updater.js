@@ -87,10 +87,10 @@ exports.initialize = function (url) {
     });
 
     // Start the update check
-    // if (! skelectron.isDev) {
-    autoUpdater.setFeedURL(feedUrl);
-    autoUpdater.checkForUpdates();
-    // }
+    if (! skelectron.isDev) {
+        autoUpdater.setFeedURL(feedUrl);
+        autoUpdater.checkForUpdates();
+    }
 };
 
 // Manually check for updates
