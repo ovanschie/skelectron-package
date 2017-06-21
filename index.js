@@ -22,9 +22,7 @@ exports.titleBar = function () {
 exports.isDev = isDev;
 
 // Updater
-exports.updater = function () {
-    require('./updater');
-};
+exports.updater = require('./updater');
 
 // App Path Helpers
 exports.appPath = function (unpacked = false) {
