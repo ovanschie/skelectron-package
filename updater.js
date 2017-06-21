@@ -6,16 +6,21 @@ const path = require('path');
 const skelectron = require('skelectron');
 
 let state = 'no-update',
-    manualCheck = false;
+    manualCheck = false,
+    feedUrl = '';
 
 // Initialize the updater
-exports.initialize = function (feedUrl) {
+exports.initialize = function (url) {
 
     // Skip for appstore builds
     if (process.mas) {
         return;
     }
 
+    // set the feedUrl
+    feedUrl = url;
+
+    // States
     autoUpdater.on('checking-for-update', function () {
         state = 'checking';
         exports.updateMenu();
@@ -83,12 +88,22 @@ exports.initialize = function (feedUrl) {
     });
 
     // Start the update check
-    if (! skelectron.isDev) {
-        autoUpdater.setFeedURL(feedUrl);
-        autoUpdater.checkForUpdates();
-    }
+    // if (! skelectron.isDev) {
+    autoUpdater.setFeedURL(feedUrl);
+    autoUpdater.checkForUpdates();
+    // }
 };
 
+// Manually check for updates
+exports.manuallyCheckForUpdates = function () {
+    manualCheck = true;
+
+    autoUpdater.setFeedURL(feedUrl);
+    autoUpdater.checkForUpdates();
+};
+
+// Menu items for update status
+// and mannually checking
 exports.getUpdateMenuItems = function () {
     // Skip for appstore builds
     if (process.mas) {
@@ -114,11 +129,7 @@ exports.getUpdateMenuItems = function () {
             visible: false,
             key: 'checkForUpdate',
             click: function () {
-
-                manualCheck = true;
-
-                // autoUpdater.setFeedURL('https://releases.venom-app.com/update/osx_x64/' + app.getVersion() + '/');
-                autoUpdater.checkForUpdates();
+                skelectron.updater.manuallyCheckForUpdates();
             }
         }, {
             label: 'Restart and Install Update',
@@ -126,11 +137,13 @@ exports.getUpdateMenuItems = function () {
             visible: false,
             key: 'restartToUpdate',
             click: function () {
-                autoUpdater.quitAndInstall()
+                autoUpdater.quitAndInstall();
             }
         }];
 };
 
+// Update the update mentu items from current
+// current update state
 exports.updateMenu = function () {
     let menu = electron.Menu.getApplicationMenu();
 
