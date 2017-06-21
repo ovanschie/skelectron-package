@@ -1,4 +1,3 @@
-//'https://releases.venom-app.com/update/osx_x64/' + app.getVersion() + '/'
 const electron = require('electron');
 const app = electron.app;
 const autoUpdater = electron.autoUpdater;
