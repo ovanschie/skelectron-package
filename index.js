@@ -5,21 +5,26 @@ const isDev = require('electron-is-dev');
 
 // Init main functions
 exports.install = function () {
-    require('./env.js');
+    require('./env');
 };
 
 // Install dev tools in renderer
 exports.devTools = function () {
-    require('./devtools.js');
+    require('./devtools');
 };
 
 // Titlebar options
 exports.titleBar = function () {
-    require('./titlebar.js')
+    require('./titlebar');
 };
 
 // Check for development
 exports.isDev = isDev;
+
+// Updater
+exports.updater = function () {
+    require('./updater');
+};
 
 // App Path Helpers
 exports.appPath = function (unpacked = false) {
