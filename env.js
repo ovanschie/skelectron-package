@@ -6,13 +6,12 @@ const fs = require('fs');
 
 let path = electron.app.getAppPath();
 
-if(isDev) {
+if (isDev) {
     path += '/dev.env';
-}
-else {
+} else {
     path += '/production.env';
 }
 
-if(fs.existsSync(path)){
+if (fs.existsSync(path)) {
     require('dotenv').config({ path: path });
 }

@@ -1,6 +1,6 @@
 {
   "name": "skelectron",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Skelectron helper package",
   "main": "index.js",
   "repository": {
@@ -19,8 +19,8 @@
   "homepage": "https://github.com/ovanschie/skelectron-package#readme",
   "dependencies": {
     "devtron": "^1.4.0",
-    "dotenv": "^2.0.0",
-    "electron-is-dev": "^0.1.2",
+    "dotenv": "^4.0.0",
+    "electron-is-dev": "^0.2.0",
     "vue-devtools": "^3.1.2"
   }
 }

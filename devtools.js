@@ -3,7 +3,7 @@
 const electron = require('electron');
 const isDev = require('electron-is-dev');
 
-if(isDev) {
+if (isDev) {
     require('devtron').install();
     require('vue-devtools').install();
 
